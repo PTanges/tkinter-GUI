@@ -1,0 +1,78 @@
+import tkinter
+import tkinter.messagebox
+
+// Available Widgets
+// BUTTON CANVAS CHECKBUTTON LABEL RADIOBUTTON
+
+class MYGUI:
+	def__init__ (self):
+		# Create instance of the TK class in the tkinter module
+		self._main_window = tkinter.TK()
+
+		# Rename visible GUI window name
+			# Border via Label(self._main_window, text = String, borderwidth = 1, relief = "solid")
+			# Relief may be flat solid or raised
+		self._main_window.title("My First GUI,...")
+		self._label1 = tkinter.Label(self._main_window, text = "Hello World!")
+		self._label2 = tkinter.Label(self._main_window, text = "This is my GUI program!")
+
+		# Add widget to a window, includes positioning and visibility
+			# Positioning via pack(side="left"), multiple will be on the same row
+			# May add Internal (between text and border) or External (between border and edges of widget) padding
+			# Internal via pack(ipadx=15, ipady=5)
+			# External via pack(padx=15, pady=5)
+		self._label1.pack()
+		self._label2.pack()
+
+		# Frames as containers to hold widget, if both horizontal and vertical
+			# May tkinter.Frame(self._main_window, borderwidth="1", relief = "solid")
+		self._top_frame = tkinter.Frame(self._main_window)
+		self._label3 = tkinter.Label(self._top_frame, text = "Label 3")
+		self._label3.pack(side="left")
+		self._label4 = tkinter.Label(self._top_frame, text = "Label 4")
+		self._label4.pack(side="left")
+
+		# Button
+			# callback_function will be a self designated function
+			# no () because that's called upon program execution, which is when the button is drawn to the window
+		self._my_button = tkinter.Button(self._main_window, text = "Click Me!", command=self.callbackfunction)
+		self._my_button.pack()
+		self._quit_button = tkinter.Button(self._main_window, text="Quit", command=self._main_window.destroy)
+		self._quit_button.pack()
+
+		# Entry to allow user input
+		self._entry = tkinter.Entry(self._main_window, width"10")
+		self._entry.pack(padx=15, pady=15, side="left")
+		self._submit_button = (self._main_window, text="Submit", command=self.submit_callback)
+		self._submit_button.pack(padx=(0,15), pady=15, side="left")
+
+		# Display window via an infinite loop with an X button break
+		tkinter.mainloop()
+
+	def callback_function(self):
+		# Dialogbox
+		# tkinter.messagebox.showinfo('Dialog Box Title', 'Dialog Box Message')
+		tkinter.messagebox.showinfo("Button Response", "Thanks for clicking the button")
+
+	def submit_callback(self):
+		text = self._entry.get()
+		tkinter.messagebox.showinfo('Data', text)
+		# tkinter.messagbeox.showerror("Error", "Please enter a number") with a try: except:
+
+	def changeTitle (self, titleName):
+		# Rename visible GUI window name
+		self._main_window.title(titleName)
+
+		# May edit Labels to display text (output field) with the set() command
+		# self._stringV = tkinter.StringVar()
+		# self._my_label = tkinter.Label(self._main_window, textvariable=self._stringV)
+		# self._my_button = tkinter.Button(self._main_window, text="Click me!", command=self.click_handler)
+		# pack button and pack label
+		# def click_handler (self): self._stringV.set("Hello World")
+
+def main():
+	pass
+
+
+if __name__ == "__main__"():
+	main()
